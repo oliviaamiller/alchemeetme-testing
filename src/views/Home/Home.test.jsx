@@ -1,3 +1,5 @@
+import { render, screen } from '@testing-library/react';
+import Home from './Home';
 
 const user = {
   id: 1,
@@ -8,8 +10,26 @@ const user = {
   likes: ['React', 'Anime', 'Traveling', 'Living', 'Tower Defense Games', 'Card Games'],
   motto: 'Res Non Verba',
   color: 'crimson',
-}
+};
 
-test('Should render the user profile', () => {
+describe('profile', () => {
+  it('Should render the user profile', async () => {
+    render(<Home user={user} />);
 
-})
+    const name = await screen.findByText('Vonta');
+    const motto = await screen.findByText('Res Non Verba');
+    const interestsHeading = await screen.findByText('Interests');
+    const avatar = screen.getByAltText('avatar');
+    const headerImg = screen.getByAltText('header');
+    const likesArray = await screen.findAllByText(['React', 'Anime', 'Traveling', 'Living', 'Tower Defense Games', 'Card Games']);
+
+    
+
+    expect(name).toBeInTheDocument();
+    expect(motto).toBeInTheDocument();
+    expect(interestsHeading).toBeInTheDocument();
+    expect(avatar).toBeInTheDocument();
+    expect(headerImg).toBeInTheDocument();
+    expect(likesArray).toBeInTheDocument();
+  });
+});

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react'
-import App from './App'
+import { render, screen } from '@testing-library/react';
+import App from './App';
 
 const user = {
   id: 1,
@@ -10,17 +10,17 @@ const user = {
   likes: ['React', 'Anime', 'Traveling', 'Living', 'Tower Defense Games', 'Card Games'],
   motto: 'Res Non Verba',
   color: 'crimson',
-}
+};
 
-describe('first', () => {
+describe('header', () => {
   it('Should render the header', async () => {
-    render(<App user={user} />)
+    render(<App user={user} />);
 
-    const alt = screen.getByAltText('Alchemy Logo')
+    const alt = screen.getByAltText('Alchemy Logo');
 
-    const name = await screen.findByText('Vonta')
+    const name = await screen.findByText('Vonta');
 
-    expect(alt).toBeInTheDocument()
-    expect(name).toBeInTheDocument()
-  })
-})
+    expect(alt).toBeInTheDocument();
+    expect(name).toBeInTheDocument();
+  });
+});
