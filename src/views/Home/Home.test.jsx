@@ -21,16 +21,14 @@ describe('profile', () => {
     const interestsHeading = await screen.findByText('Interests');
     const avatar = screen.getByAltText('avatar');
     const headerImg = screen.getByAltText('header');
+    const likesArray = screen.getByRole('list');
 
-    waitFor(() => {
-      const likesArray = screen.getAllByRole('listitem');
-      expect(likesArray.length).toEqual(5);
-    });
 
     expect(name).toBeInTheDocument();
     expect(motto).toBeInTheDocument();
     expect(interestsHeading).toBeInTheDocument();
     expect(avatar).toBeInTheDocument();
     expect(headerImg).toBeInTheDocument();
+    expect(likesArray).toBeInTheDocument();
   });
 });
