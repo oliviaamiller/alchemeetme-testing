@@ -20,7 +20,10 @@ describe('header', () => {
 
     const name = await screen.findByText('Vonta');
 
+    const header = screen.getByRole('banner');
+
     expect(alt).toBeInTheDocument();
     expect(name).toBeInTheDocument();
+    expect(header).toHaveStyle({ background: 'var(--gray)' });
   });
 });
