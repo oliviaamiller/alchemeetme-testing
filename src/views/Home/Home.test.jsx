@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Home from './Home';
 
 const user = {
@@ -21,15 +21,16 @@ describe('profile', () => {
     const interestsHeading = await screen.findByText('Interests');
     const avatar = screen.getByAltText('avatar');
     const headerImg = screen.getByAltText('header');
-    const likesArray = await screen.findAllByText(['React', 'Anime', 'Traveling', 'Living', 'Tower Defense Games', 'Card Games']);
 
-    
+    waitFor(() => {
+      const likesArray = screen.getAllByRole('listitem');
+      expect(likesArray.length).toEqual(5);
+    });
 
     expect(name).toBeInTheDocument();
     expect(motto).toBeInTheDocument();
     expect(interestsHeading).toBeInTheDocument();
     expect(avatar).toBeInTheDocument();
     expect(headerImg).toBeInTheDocument();
-    expect(likesArray).toBeInTheDocument();
   });
 });
